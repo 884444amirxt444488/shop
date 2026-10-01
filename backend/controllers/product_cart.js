@@ -30,9 +30,6 @@ export async function add_product_to_cart(req, res) {
             if (productExists.rows.length === 0) {
                 throw new AppError("Products not found", 404)
             }
-            if (productExists.rows[0].productstock < productstock) {
-                throw new AppError(`Sorry! Avalible is: ${productExists.rows[0].productstock}`, 409)
-            }
             let userOrderdCart = await client.query("SELECT * FROM orders WHERE userid = $1 AND productid = $2", [id, productid])
             if (userOrderdCart.rows.length === 0) {
                 userOrderdCart = await client.query("INSERT INTO orders(userid, productid, productname, productstock, productprice) VALUES($1, $2, $3, $4, $5) RETURNING *", [id, productid, productExists.rows[0].productname, productstock, productExists.rows[0].productprice])

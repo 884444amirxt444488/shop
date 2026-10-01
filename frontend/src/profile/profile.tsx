@@ -6,6 +6,7 @@ import { toast } from "sonner"
 import { useMutation } from "@tanstack/react-query"
 import { Link, useNavigate } from "react-router-dom"
 import type { AxiosError } from "axios"
+import CircularWaveLoader from "../Loading"
 
 
 
@@ -168,7 +169,11 @@ export default function Profile() {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="-150 0 1700 320">
                 <path fill="#111111" fillOpacity="1" d="M0,224L36.9,32L73.8,128L110.8,256L147.7,160L184.6,96L221.5,320L258.5,224L295.4,96L332.3,224L369.2,288L406.2,96L443.1,128L480,128L516.9,192L553.8,224L590.8,320L627.7,192L664.6,32L701.5,320L738.5,32L775.4,320L812.3,160L849.2,224L886.2,96L923.1,192L960,288L996.9,96L1033.8,128L1070.8,0L1107.7,160L1144.6,96L1181.5,64L1218.5,64L1255.4,320L1292.3,160L1329.2,288L1366.2,288L1403.1,224L1440,288L1440,320L1403.1,320L1366.2,320L1329.2,320L1292.3,320L1255.4,320L1218.5,320L1181.5,320L1144.6,320L1107.7,320L1070.8,320L1033.8,320L996.9,320L960,320L923.1,320L886.2,320L849.2,320L812.3,320L775.4,320L738.5,320L701.5,320L664.6,320L627.7,320L590.8,320L553.8,320L516.9,320L480,320L443.1,320L406.2,320L369.2,320L332.3,320L295.4,320L258.5,320L221.5,320L184.6,320L147.7,320L110.8,320L73.8,320L36.9,320L0,320Z"></path>
             </svg>
-
+            {
+                (editProfile.isPending || deleteProfile.isPending) && (
+                    <CircularWaveLoader />
+                )
+            }
         </div>
         
 

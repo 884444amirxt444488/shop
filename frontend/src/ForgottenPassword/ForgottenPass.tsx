@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { api } from "../api/AxApi";
 import { toast } from "sonner";
 import type { AxiosError } from "axios";
+import Loading from "../Loading2";
 
 
 
@@ -94,7 +95,11 @@ export function ForgottenPassword() {
                                     email
                                 })
                             }} className="change-password-btn">
-                                Send code 
+                                {
+                                    getCode.isPending 
+                                    ? <Loading />
+                                    : "Get code"
+                                } 
                             </button>
                             <Link to={"/auth"} className="login-link">Login</Link>
                         </div>
@@ -126,7 +131,11 @@ export function ForgottenPassword() {
                                 confirmPassword
                             })
                         }} className="change-password-btn">
-                            Final change
+                            {
+                                finalChange.isPending 
+                                ? <Loading />
+                                : "Final change"
+                            }
                         </button>
                     </div>
 

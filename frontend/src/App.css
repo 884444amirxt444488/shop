@@ -40,10 +40,10 @@ body {
 
 @keyframes header_animate {
     0% {
-        left: -10%;
+left: -10%;
     }
     100% {
-        left: 110%;
+left: 110%;
     }
 }
 
@@ -121,12 +121,11 @@ body {
 .burger {
     display: none;
 }
-
 .header_mobile_link {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
-    height: 100%;
+    height: 100lvh;
     width: 80%;
     max-width: 400px;
     background-color: rgb(164, 164, 162);
@@ -134,7 +133,6 @@ body {
     z-index: 4;
     padding: 5px;
     box-sizing: border-box;
-    
 }
 .mobile_link {
     display: block;
@@ -163,33 +161,33 @@ body {
 
 @media (max-width: 800px) {
     .header_logo {
-        background-color: rgba(0, 0, 255, 0);
-        text-align: center;
-        border-radius: 10px;
-        margin-left: 14px;
-        margin-right: auto;
+background-color: rgba(0, 0, 255, 0);
+text-align: center;
+border-radius: 10px;
+margin-left: 14px;
+margin-right: auto;
     }
     .header_links {
-        display: none;
+display: none;
     }
     .header_link {
-        display: none;
+display: none;
     }
 
     .header_profile {
-        display: none;
+display: none;
     }
 
     .burger {
-        display: block;
-        padding: 5px;
-        border-radius: 15px;
-        margin-right: 14px;
-        cursor: pointer;
-        background-color: rgba(142, 141, 141, 0.984);
+display: block;
+padding: 5px;
+border-radius: 15px;
+margin-right: 14px;
+cursor: pointer;
+background-color: rgba(142, 141, 141, 0.984);
     }
     .burger:active {
-        background-color: red;
+background-color: red;
     }
 }
 
@@ -286,7 +284,6 @@ body {
     border: 1px dotted blue;
     margin-top: -4px;
 }
-
 .login-colection {
     display: flex;
     align-items: center;
@@ -295,8 +292,8 @@ body {
     max-width: 220px;
     min-width: 100px;
 }
-
 .login-btn {
+    position: relative;
     background-color: white;
     margin: 0 auto 0 0;
     cursor: pointer;
@@ -304,6 +301,8 @@ body {
     color: rgb(0, 0, 0);
     border-radius: 10px;
     border: 1px dotted rgb(225, 255, 0);
+    width: 100px;
+    height: 25px;
 }
 .login-btn:active {
     background-color: rgb(255, 0, 60);
@@ -335,9 +334,9 @@ body {
     max-width: 500px;
     margin: 20px 0;
     background: linear-gradient(
-        90deg,
-        rgb(243, 244, 244),
-        rgb(245, 224, 224)
+90deg,
+rgb(243, 244, 244),
+rgb(245, 224, 224)
     );
     border: 2px solid rgb(3, 236, 232);
 }
@@ -470,40 +469,39 @@ body {
 }
 .UsaCircle {
     background:
-        radial-gradient(circle, white 1px, transparent 1.2px)
-            0 0 / 5px 5px,
+radial-gradient(circle, white 1px, transparent 1.2px)
+    0 0 / 5px 5px,
 
-        linear-gradient(#3c3b6e, #3c3b6e)
-            left top / 45% 55% no-repeat,
+linear-gradient(#3c3b6e, #3c3b6e)
+    left top / 45% 55% no-repeat,
 
-        linear-gradient(
-            to bottom,
-            #ff001e 0 14.28%,
-            white 14.28% 28.56%,
-            #f5001d 28.56% 42.84%,
-            white 42.84% 57.12%,
-            #ff001e 57.12% 71.4%,
-            white 71.4% 85.68%,
-            #fe011f 85.68% 100%
-        );
+linear-gradient(
+    to bottom,
+    #ff001e 0 14.28%,
+    white 14.28% 28.56%,
+    #f5001d 28.56% 42.84%,
+    white 42.84% 57.12%,
+    #ff001e 57.12% 71.4%,
+    white 71.4% 85.68%,
+    #fe011f 85.68% 100%
+);
 }
 .IrCircle {
     background:
-        radial-gradient(
-            circle,
-            rgb(6, 6, 6) 0 1.5px,
-            transparent 1.7px
-        ) center / 100% 100% no-repeat,
+radial-gradient(
+    circle,
+    rgb(6, 6, 6) 0 1.5px,
+    transparent 1.7px
+) center / 100% 100% no-repeat,
 
-        linear-gradient(
-            to bottom,
-            #239f40 0 33.33%,
-            white 33.33% 66.66%,
-            #da0000 66.66% 100%
-        );
+linear-gradient(
+    to bottom,
+    #239f40 0 33.33%,
+    white 33.33% 66.66%,
+    #da0000 66.66% 100%
+);
     transform: translateX(62px);
 }
-
 .total-change-password {
     background-color: rgb(67, 67, 67);
     color: white;
@@ -619,6 +617,9 @@ body {
     box-shadow: 0 0 20px rgb(0, 30, 255);
 }
 .change-password-btn {
+    position: relative;
+    width: 100px;
+    height: 40px;
     border-radius: 20px;
     color: white;
     background-color: black;
@@ -790,9 +791,9 @@ body {
     justify-content: center;
     flex-direction: column;
     background: linear-gradient(
-        90deg,
-        rgb(1, 23, 190),
-        rgb(223, 0, 0)
+90deg,
+rgb(1, 23, 190),
+rgb(223, 0, 0)
     );
     width: 80%;
     max-width: 200px;
@@ -913,6 +914,9 @@ body {
     left: 10px;
 }
 .addbtn-btn {
+    position: relative;
+    width: 50px;
+    height: 30px;
     background-color: #f8f8f8;
     border-radius: 20px;
     border: 1px solid rgb(6, 4, 4);
@@ -922,11 +926,10 @@ body {
     background-color: rgb(0, 127, 132);
     color: white;
 }
-
 .mainUserCart1 {
     background-color: rgba(0, 0, 0, 0.29);
     padding: 10px;
-    margin: 20px;
+    margin: 100px 0 100px 0;
     border-radius: 20px;
 }
 
@@ -996,6 +999,9 @@ body {
     justify-content: center;
 }
 .saveBtn {
+    position: relative;
+    width: 50px;
+    height: 30px;
     background: rgb(1, 255, 1);
     padding: 5px;
     border-radius: 20px;
@@ -1008,9 +1014,147 @@ body {
     background-color: black;
     color: white;
 }
+.PayBtn {
+    position: relative;
+    width: 100px;
+    height: 30px;
+    background-color: rgb(255, 254, 254);
+    color: rgb(0, 0, 0);
+    width: 100px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: auto;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    text-align: center;
+    text-decoration: none;
+}
+.PayBtn:hover {
+    transform: scale(1.2);
+    background-color: rgb(66, 66, 66);
+    color: white;
+}
+.totalPay {
+    border: 4px solid black;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    gap: 20px;
+    padding: 15px;
+}
+.in3 {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 20px 0;
+    font-size: 15px;
+    width: 80%;
+    max-width: 200px;
+    min-width: 100px;
+    border: 2px solid black;
+}
+.wowBackGround {
+    background-color: black;
+}
+.in3:focus {
+    background-color: black;
+    color: white;
+}
+.paYBtn {
+    width: 100%;
+    text-align: center;
+}
+.PaymentBtn {
+    cursor: pointer;
+    margin: 10px 0px 10px -70px;
+    background-color: green;
+    color: white;
+    width: 100px;
+    border: 2px solid blue;
+    border-radius: 20px;
+    padding: 5px;
+}
+.PaymentBtn:hover {
+    background-color: white;
+    color: black;
+}
 
+.total_loading {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(174, 171, 171, 0.772);
+    inset: 0;
+    z-index: 68;
+}
+.circularWaveLoader {
+    width: 200px;
+    height: 200px;
+}
 
+.circularWaveLoader svg {
+    width: 100%;
+    height: 100%;
+}
 
+.circularWaveLoader .ring {
+    fill: none;
+    stroke: #00000000;
+    stroke-width: 2;
+}
+
+.circularWaveLoader .wave {
+    fill: none;
+    stroke: rgb(0, 0, 0);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.mainGetRound {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    background-color: rgba(20, 0, 0, 0);
+}
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 60deg;
+    inherits: false;
+} 
+.getRound {
+    width: 20px;
+    height: 20px;
+    background: conic-gradient(
+        from 0deg,
+        rgb(255, 0, 0) 0 var(--angle),
+        rgba(255, 0, 0, 0) var(--angle) 360deg
+    );
+    border-radius: 50%;
+    -webkit-mask: radial-gradient(transparent 60%, black 50%);
+    mask: radial-gradient(transparent 60%, black 50%);
+    animation: rotateYe 2s linear infinite forwards;
+}
+@keyframes rotateYe {
+    0% {
+        --angle: 60deg;
+        rotate: 0;
+    }
+    50% {
+        --angle: 300deg;
+        rotate: 360deg;
+    }
+    100% {
+        --angle: 60deg;
+        rotate: 720deg;
+    }
+}
 
 
 

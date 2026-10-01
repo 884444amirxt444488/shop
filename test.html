@@ -5,24 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .total-email-form {
-            background-color: rgb(244, 243, 243);
-            color: rgb(11, 11, 11);
-            padding: 20px;
-            width: 80%;
-            max-width: 400px;
-            min-width: 100px;
-            border-radius: 20px;
-            margin: 20px auto;
-            border: 2px solid blue;
+        .mainGetRound {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            inset: 0;
+            background-color: rgb(20, 0, 0);
         }
-        .title {
-            padding: 5px;
-            border-top: 4px solid rgb(0, 0, 0);
+
+        @property --angle {
+            syntax: "<angle>";
+            initial-value: 60deg;
+            inherits: false;
+        } 
+        .getRound {
+            width: 30px;
+            height: 30px;
+            background: conic-gradient(
+                from 0deg,
+                rgb(208, 255, 0) 0 var(--angle),
+                rgba(255, 0, 0, 0) var(--angle) 360deg
+            );
+            border-radius: 50%;
+            -webkit-mask: radial-gradient(transparent 60%, black 50%);
+            mask: radial-gradient(transparent 60%, black 50%);
+            animation: rotateYe 2s linear infinite forwards;
         }
-        .link {
-            color: rgb(4, 25, 255);
+        @keyframes rotateYe {
+            0% {
+                --angle: 60deg;
+                rotate: 0;
+            }
+            50% {
+                --angle: 300deg;
+                rotate: 360deg;
+            }
+            100% {
+                --angle: 60deg;
+                rotate: 720deg;
+            }
         }
+
+
 
 
 
@@ -30,19 +55,11 @@
 </head>
 <body>
 
-    <div class="total-email-form">
-        <div class="title">
-            <h3>password change</h3>
-            <p>Do not share your code with no body</p>
-            <p>This code valid for 10 min. then you get code come back to site and get your new password</p>
-            <h3>Code: 4444</h3>
-            <p>Thanks for using my site. <a href="http://localhost:3000/forgottenPassword" class="link">Go to site</a></p>
+    <button class="btn">
+        <div class="mainGetRound">
+            <span class="getRound"></span>
         </div>
-    </div>
-
-
-
-
+    </button>
 
 
     

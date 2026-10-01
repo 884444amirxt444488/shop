@@ -4,6 +4,7 @@ import { api } from "../api/AxApi"
 import { toast } from "sonner"
 import { useMutation } from "@tanstack/react-query"
 import type { AxiosError } from "axios"
+import CircularWaveLoader from "../Loading"
 
 
 type Signup = {
@@ -100,9 +101,14 @@ export default function Signup() {
                     <Link to={"/auth"} className="login-link">Login</Link>
                 </div>
             </div>
+            {
+                signup.isPending && (
+                    <CircularWaveLoader />
+                )
+            }
         </div>
 
-
+            
     )
 
 

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { api } from "../api/AxApi"
 import { toast } from "sonner"
 import type { AxiosError } from "axios"
+import Loading from "../Loading2"
 
 
 type ErrorResponse = {
@@ -83,13 +84,16 @@ export default function Login() {
                             password
                         })
                     }}>
-                        Login 
+                        {
+                            login.isPending ? 
+                            <Loading />
+                            : "Login"
+                        } 
                     </button>
                     <Link to={"/signup"} className="signup-link">Signup</Link>
                 </div>
                 <h5 className="forgpass">If you forgott your password click here: <Link to={"/forgottenPass"} className="signup-link">Forgott pass</Link> </h5>
             </div>
-
         </div>
 
     )

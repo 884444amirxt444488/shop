@@ -10,6 +10,7 @@
     "jsonwebtoken": "^9.0.3",
     "nodemailer": "^10.0.10",
     "pg": "^8.23.0",
+    "stripe": "^22.6.2",
     "zarinpal-node-sdk": "^2.2.0",
     "zod": "^4.6.5"
   }

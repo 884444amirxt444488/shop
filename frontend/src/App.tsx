@@ -1,4 +1,3 @@
-
 import './App.css'
 import Footer from './footer'
 import Header from './header'
@@ -13,6 +12,10 @@ import { ChangePassword } from './changePassword/changePass'
 import { ForgottenPassword } from './ForgottenPassword/ForgottenPass'
 import { Products } from './products/Products'
 import ProductCart from './productcart/ProductCart'
+import Payment from './payment/Payment'
+
+
+
 function App() {
 
   return (
@@ -35,6 +38,7 @@ function App() {
         <Route path={"/changePassword"} element={<ChangePassword />} />
         <Route path={"/forgottenPass"} element={<ForgottenPassword />} />
         <Route path={"/ShoppingCart"} element={<ProductCart />} />
+        <Route path={"/PayMentSection"} element={<Payment />} />
       </Route>
     </Routes>
 

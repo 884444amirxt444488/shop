@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { api } from "../api/AxApi";
 import { toast } from "sonner";
 import type { AxiosError } from "axios";
+import CircularWaveLoader from "../Loading";
 
 
 
@@ -70,6 +71,11 @@ export function ChangePassword() {
                 </button>
                 <Link to={"/profile"} className="login-link">Profile</Link>
             </div>
+            {
+                editPassword.isPending && (
+                    <CircularWaveLoader />
+                )
+            }
 
         </div>
     )

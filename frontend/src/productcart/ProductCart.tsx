@@ -3,6 +3,9 @@ import { Plus, Minus, Trash2, PackageX } from "lucide-react"
 import { toast } from "sonner"
 import { api } from "../api/AxApi"
 import type { AxiosError } from "axios"
+import { useNavigate } from "react-router-dom"
+import Loading from "../Loading2"
+import CircularWaveLoader from "../Loading"
 
 
 
@@ -33,7 +36,7 @@ type mainSaveCart = {
 export default function ProductCart() {
     const queryClient = useQueryClient()
 
-
+    const navigate = useNavigate()
 
     const {
         data: AllProductsInCartBeforSave
@@ -47,7 +50,7 @@ export default function ProductCart() {
     })
 
 
-    const totalPrice =  AllProductsInCartBeforSave?.products_user_cart.reduce(
+    const totalPrice =  AllProductsInCartBeforSave?.products_user_cart?.reduce(
         (total, item) => 
             total + item.productprice * item.productstock,
         0
@@ -119,7 +122,7 @@ export default function ProductCart() {
     })
 
     const emptyFields = () => {
-        if (AllProductsInCartBeforSave?.products_user_cart.length === 0) {
+        if (AllProductsInCartBeforSave?.products_user_cart?.length === 0) {
             return "Empty cart"
         }
     }
@@ -154,7 +157,39 @@ export default function ProductCart() {
         }
     })
 
+    const getUUId = useMutation({
+        mutationFn: async() => {
+            const response = await api.post("/getUUid")
+            return response.data
+        },
+        onSuccess: (data) => {
+            toast.success(data.message)
+            localStorage.setItem("uuid", data.sessionId)
+            localStorage.setItem("totalprice", data.totalPrice)
+            setTimeout(() => {
+                navigate("/PayMentSection")
+            }, 2000)
+        },
+        onError: (err: AxiosError<{message: string}>) => {
+            toast.error(err.response?.data?.message || err?.message || "Unknown Error")
+        }
+    })
+
     const saveProductsCart = useMutation({
+        mutationFn: async(data: mainSaveCart) => {
+            const response = await api.post("/addProductToCart", data)
+            return response.data
+        },
+        onSuccess: (data) => {
+            toast.success(data?.message)
+            getUUId.mutate()
+        },
+        onError: (err: AxiosError<{message: string}>) => {
+            toast.error(err.response?.data?.message || err?.message || "Unknown Error")
+        }
+    })
+
+    const saveProductsCart2 = useMutation({
         mutationFn: async(data: mainSaveCart) => {
             const response = await api.post("/addProductToCart", data)
             return response.data
@@ -166,6 +201,7 @@ export default function ProductCart() {
             toast.error(err.response?.data?.message || err?.message || "Unknown Error")
         }
     })
+    
 
 
 
@@ -175,7 +211,7 @@ export default function ProductCart() {
             <div className="mainUserCart2">
                 <h3>{emptyFields()}</h3>
                 {
-                    AllProductsInCartBeforSave?.products_user_cart.map((item) => (
+                    AllProductsInCartBeforSave?.products_user_cart?.map((item) => (
                         <div className="TotalCarts" key={item.id}>
                             <button className="deleteFromProductCart" onClick={() => {
                                     deleteProductStock.mutate({productid: item.id})
@@ -214,8 +250,8 @@ export default function ProductCart() {
             </div>
             <div className="totalPriceAndSaveBtn">
                 <p className="totalPriceClass">Total price: {totalPrice === 0 ? "0" : totalPrice}$</p>
-                <button onClick={() => {
-                    saveProductsCart.mutate({
+                <button disabled={saveProductsCart2.isPending} onClick={() => {
+                    saveProductsCart2.mutate({
                         products: AllProductsInCartBeforSave?.products_user_cart.map((item) => ({
                             productid: item.id,
                             productname: item.productname,
@@ -223,13 +259,35 @@ export default function ProductCart() {
                         })) ?? []
                     })
                 }} className="saveBtn">
-                    Save
+                    {
+                        saveProductsCart2.isPending ? 
+                        <Loading />
+                        : "Save"
+                    }
                 </button>
             </div>
-            <button className="deleteAllBtn" onClick={() => {
-                deleteAllProductFromCart.mutate()
-            }}
-            ><PackageX /> </button>
+            <div className="totalPriceAndSaveBtn">
+                <button className="PayBtn" disabled={saveProductsCart.isPending || getUUId.isPending} onClick={() => {
+                    saveProductsCart.mutate({
+                        products: AllProductsInCartBeforSave?.products_user_cart.map((item) => ({
+                            productid: item.id,
+                            productname: item.productname,
+                            productstock: item.productstock
+                        })) ?? []
+                    })
+                }}>
+                    pay
+                </button>
+                <button className="deleteAllBtn" onClick={() => {
+                    deleteAllProductFromCart.mutate()
+                }}
+                ><PackageX /></button>
+            </div>
+            {
+                saveProductsCart.isPending && (
+                    <CircularWaveLoader />
+                )
+            }
         </div>
 
 

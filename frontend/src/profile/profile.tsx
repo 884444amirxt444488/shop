@@ -86,7 +86,7 @@ export default function Profile() {
             toast.success(response.data?.message)
             setTimeout(() => {
                 localStorage.removeItem("accessToken")
-                navigate("/login")
+                navigate("/Auth")
             }, 2000)
         },
         onError: (error: AxiosError<{message: string}>) => {
